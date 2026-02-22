@@ -1,0 +1,337 @@
+// scripts/app.js
+// Vanilla JS enhancements for sorting and contact integration
+(() => {
+  'use strict';
+
+  const RIO_CLARO = { lat: -22.4154, lon: -47.5733 };
+  const USER_COORDS_KEY = 'user_coords';
+
+  // Module-scoped state for sharing between functions
+  let currentUserCoords = null;
+  let currentClinics = [];
+
+  function renderCards(clinics) {
+    const container = document.getElementById('clinics-container');
+    if (!container) return;
+    container.innerHTML = '';
+    clinics.forEach((clinic, idx) => {
+      const col = document.createElement('div');
+      col.className = 'col-sm-8 col-12 text-center';
+      col.style.order = idx;
+      const card = document.createElement('div');
+      card.className = 'card mb-3 shadow border-0';
+      card.id = clinic.htmlElementId || `clinic-card-${idx+1}`;
+      
+      // Update the clinic's element reference to the newly created card
+      clinic.element = card;
+      
+      const cardImg = clinic.logoImage ? `<img src="${clinic.logoImage}" class="img-fluid rounded-start" alt="Logotipo de ${clinic.name}">` : '';
+      const mapsLink = getGoogleMapsLink(clinic.address, clinic.latitude, clinic.longitude);
+      const whatsappLink = getWhatsAppLink(clinic.whatsapp || clinic.phone, clinic.name);
+      const teleLink = clinic.phone ? `tel:+${clinic.phone.replace(/\D/g, '')}` : '#';
+      
+      card.innerHTML = `
+        <div class="row g-0">
+          <div class="col-md-4">
+            ${cardImg}
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12">
+                  <h2 class="card-title fs-3"><strong>${clinic.name}</strong></h2>
+                  <p class="card-text mb-2">${clinic.description}</p>
+                  <address class="py-0 mb-0 fw-bold"><i class="fa fa-map-pin"></i> ${clinic.address}</address>
+                </div>
+              </div>
+              <hr class="border-secondary mt-2">
+              <div class="row justify-content-center g-2">
+                <div class="col-md-4 col-12">
+                  <a class="btn btn-lg btn-success py-1 px-2" onclick="return gtag_report_conversion('${whatsappLink}');" href="${whatsappLink}" title="Entrar em contato com ${clinic.name} por WhatsApp">
+                    <i class="fab fa-whatsapp fa-lg"></i> <span class="">WhatsApp</span></a>
+                </div>
+                <div class="col-md-3 col-12">
+                  <a href="${teleLink}" class="btn btn-lg btn-info py-1 px-2" title="Ligar para ${clinic.name}"><i class="fa fa-phone fa-lg"></i> Ligar</a>
+                </div>
+                <div class="col-md-3 col-12">
+                  <a href="${mapsLink}" class="btn btn-lg btn-warning py-1 px-2" title="Calcular rota para ${clinic.name}"><i class="fa fa-location-arrow fa-lg"></i> Rotas</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      col.appendChild(card);
+      container.appendChild(col);
+    });
+  }
+
+  function calculateDistance(lat1, lon1, lat2, lon2) {
+    const toRad = v => (v * Math.PI) / 180;
+    const R = 6371; // km
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  function getWhatsAppLink(phone, clinicName) {
+    if (!phone) return '#';
+    const digits = phone.replace(/\D/g, '');
+    const core = digits.startsWith('55') ? digits.slice(2) : digits;
+    const phoneParam = '55' + core;
+    const message = `Olá. Visitei seu anúncio no Veterinários em Rio Claro e gostaria de saber mais sobre ${clinicName}.`;
+    return `https://api.whatsapp.com/send?phone=${phoneParam}&text=${encodeURIComponent(message)}`;
+  }
+
+  function getGoogleMapsLink(address, lat, lon) {
+    if (lat && lon) return `https://www.google.com/maps?q=${lat},${lon}`;
+    if (address) return `https://www.google.com/maps?q=${encodeURIComponent(address)}`;
+    return '#';
+  }
+
+  async function extractClinics() {
+    // Prefer structured data from anunciantes.json if available
+    try {
+      const res = await fetch('http://localhost:3000/api/clinics', { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        return data.map(item => {
+          // Don't filter by element; renderCards will create them
+          return Object.assign({}, item, { element: null });
+        });
+      }
+    } catch (e) {
+      // fallback to DOM extraction below
+    }
+
+    const cards = Array.from(document.querySelectorAll('.card.mb-3'));
+    const clinics = cards.map((card, idx) => {
+      try {
+        const nameEl = card.querySelector('.card-title');
+        const name = nameEl ? nameEl.innerText.trim() : `clinic-${idx+1}`;
+        const descEl = card.querySelector('.card-text');
+        const description = descEl ? descEl.innerText.trim() : '';
+        const addressEl = card.querySelector('p.fw-bold');
+        const address = addressEl ? addressEl.innerText.replace(/\s+/g, ' ').trim() : '';
+        const phoneAnchor = card.querySelector('a[href^="tel:"]');
+        const phone = phoneAnchor ? phoneAnchor.getAttribute('href').replace(/^tel:/, '').trim() : '';
+        const whatsappAnchor = card.querySelector('a[href*="whatsapp"], a[title*="WhatsApp"], a[onclick*="whatsapp"]');
+        const whatsappHref = whatsappAnchor ? (whatsappAnchor.getAttribute('href') || '') : '';
+        const whatsapp = whatsappHref || phone;
+        const img = card.querySelector('img');
+        const logoImage = img ? img.getAttribute('src') : '';
+
+        // If no coordinates available, spread around Rio Claro center slightly
+        const latitude = RIO_CLARO.lat + (idx * 0.001);
+        const longitude = RIO_CLARO.lon + (idx * 0.001);
+
+        return {
+          id: idx+1,
+          name,
+          description,
+          address,
+          phone,
+          whatsapp,
+          latitude,
+          longitude,
+          routesLink: '',
+          logoImage: '',
+          htmlElementId: card.id || `clinic-card-${idx+1}`,
+          element: card
+        };
+      } catch (err) {
+        console.error('Error extracting clinic', err);
+        return null;
+      }
+    }).filter(Boolean);
+    return clinics;
+  }
+
+  function sortByProximity(clinics, userCoords) {
+    return clinics.slice().sort((a, b) => {
+      const aHas = a.latitude != null && a.longitude != null;
+      const bHas = b.latitude != null && b.longitude != null;
+      if (!aHas && !bHas) return a.name.localeCompare(b.name, 'pt-BR');
+      if (!aHas) return 1;
+      if (!bHas) return -1;
+      const da = calculateDistance(userCoords.lat, userCoords.lon, a.latitude, a.longitude);
+      const db = calculateDistance(userCoords.lat, userCoords.lon, b.latitude, b.longitude);
+      if (da === db) return a.name.localeCompare(b.name, 'pt-BR');
+      return da - db;
+    });
+  }
+
+  function sortAlphabetically(clinics) {
+    return clinics.slice().sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
+  }
+
+  function updateSortOrder(sortedClinics) {
+    if (!sortedClinics || !sortedClinics.length) return;
+    requestAnimationFrame(() => {
+      sortedClinics.forEach((clinic, i) => {
+        try {
+          clinic.element.style.order = i;
+        } catch (err) {
+          // ignore
+        }
+      });
+    });
+  }
+
+  function updateClinicButtons(clinic) {
+    const card = clinic.element;
+    if (!card) return;
+    try {
+      const whatsappBtn = card.querySelector('a[href*="whatsapp"], a[title*="WhatsApp"], a[onclick*="whatsapp"]');
+      if (whatsappBtn) {
+        const link = getWhatsAppLink(clinic.whatsapp || clinic.phone, clinic.name);
+        whatsappBtn.setAttribute('href', link);
+      }
+
+      const phoneBtn = card.querySelector('a[href^="tel:"]');
+      if (phoneBtn && clinic.phone) {
+        const digits = clinic.phone.replace(/\D/g, '');
+        phoneBtn.setAttribute('href', `tel:+${digits}`);
+      }
+
+      const mapsBtn = card.querySelector('a[title*="Rotas"], a[title*="Routes"], a[href*="google.com/maps"]');
+      if (mapsBtn && !mapsBtn.classList.contains('disabled')) {
+        const mapLink = getGoogleMapsLink(clinic.address, clinic.latitude, clinic.longitude);
+        mapsBtn.setAttribute('href', mapLink);
+      }
+    } catch (err) {
+      console.error('Error updating buttons for', clinic.name, err);
+    }
+  }
+
+  function onSortChange(event) {
+    const value = event && event.target ? event.target.value : '0';
+    let sorted;
+    if (value === '1' || value === 'Ordem Alfabética' || value === 'alphabetical') {
+      sorted = sortAlphabetically(currentClinics);
+    } else {
+      if (currentUserCoords) sorted = sortByProximity(currentClinics, currentUserCoords);
+      else sorted = sortAlphabetically(currentClinics);
+    }
+    renderCards(sorted);
+    updateSortOrder(sorted);
+  }
+
+  function saveUserCoords(coords) {
+    try {
+      const payload = { lat: coords.latitude, lon: coords.longitude, timestamp: Date.now() };
+      localStorage.setItem(USER_COORDS_KEY, JSON.stringify(payload));
+      return payload;
+    } catch (e) { return null; }
+  }
+
+  function loadUserCoords() {
+    try {
+      const v = localStorage.getItem(USER_COORDS_KEY);
+      if (!v) return null;
+      return JSON.parse(v);
+    } catch (e) { return null; }
+  }
+
+  function requestGeolocation(onSuccess, onFailure) {
+    if (!navigator.geolocation) return onFailure && onFailure(new Error('Geolocation not supported'));
+    navigator.geolocation.getCurrentPosition(pos => {
+      const payload = saveUserCoords({ latitude: pos.coords.latitude, longitude: pos.coords.longitude });
+      onSuccess && onSuccess(payload);
+    }, err => {
+      onFailure && onFailure(err);
+    }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 600000 });
+  }
+
+  async function initializeApp() {
+    currentClinics = await extractClinics();
+    if (!currentClinics.length) return;
+
+    // Render cards dynamically
+    renderCards(currentClinics);
+
+    currentUserCoords = loadUserCoords();
+
+    const selectEl = document.querySelector('select[aria-label="order"]');
+
+    // Add Update Location button if not present
+    if (!document.getElementById('update-location-btn')) {
+      const btn = document.createElement('button');
+      btn.id = 'update-location-btn';
+      btn.type = 'button';
+      btn.className = 'btn btn-outline-light btn-sm rounded-pill';
+      btn.innerHTML = '<i class="fa fa-location-arrow"></i> Atualizar localização';
+      btn.style.margin = '0 8px';
+      btn.addEventListener('click', () => {
+        requestGeolocation((coords) => {
+          currentUserCoords = coords;
+          const sorted = sortByProximity(currentClinics, currentUserCoords);
+          renderCards(sorted);
+          updateSortOrder(sorted);
+          // Reset select to "Mais Perto" to show proximity sort
+          if (selectEl) selectEl.value = '0';
+        }, (err) => {
+          currentUserCoords = null;
+          const sorted = sortAlphabetically(currentClinics);
+          renderCards(sorted);
+          updateSortOrder(sorted);
+          if (selectEl) selectEl.value = '1';
+        });
+      });
+      // try to append to a reasonable container (navbar or header) or to body
+      const target = document.querySelector('.container, .navbar, header') || document.body;
+      target.insertBefore(btn, target.firstChild);
+    }
+
+    if (selectEl) {
+      selectEl.addEventListener('change', onSortChange);
+      // Trigger default sort (Mais Perto) if userCoords available
+      if (currentUserCoords) {
+        const sorted = sortByProximity(currentClinics, currentUserCoords);
+        renderCards(sorted);
+        updateSortOrder(sorted);
+      } else {
+        // request geolocation once on load
+        requestGeolocation((coords) => {
+          currentUserCoords = coords;
+          const sorted = sortByProximity(currentClinics, currentUserCoords);
+          renderCards(sorted);
+          updateSortOrder(sorted);
+        }, (err) => {
+          currentUserCoords = null;
+          const sorted = sortAlphabetically(currentClinics);
+          renderCards(sorted);
+          updateSortOrder(sorted);
+        });
+      }
+    } else {
+      if (currentUserCoords) {
+        const sorted = sortByProximity(currentClinics, currentUserCoords);
+        renderCards(sorted);
+        updateSortOrder(sorted);
+      } else {
+        requestGeolocation((coords) => {
+          currentUserCoords = coords;
+          const sorted = sortByProximity(currentClinics, currentUserCoords);
+          renderCards(sorted);
+          updateSortOrder(sorted);
+        }, (err) => {
+          currentUserCoords = null;
+          const sorted = sortAlphabetically(currentClinics);
+          renderCards(sorted);
+          updateSortOrder(sorted);
+        });
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeApp);
+  } else {
+    initializeApp();
+  }
+
+})();

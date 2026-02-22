@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "name": "Vet A Caminho",
+    "description": "Dra. Mariza Melotti (Veterinária A domicílio) | Cães/Gatos Atende: Rio Claro, Santa Gertrudes, Ajapí, Ipeúna, Cordeirópolis.",
+    "address": "Avenida 6, 439 Ruas 5 e 6 - Centro - Rio Claro",
+    "phone": "+5519999943132",
+    "whatsapp": "5519999943132",
+    "latitude": -22.4154,
+    "longitude": -47.5733,
+    "routesLink": "",
+    "logoImage": "assets/img/logos/vet-a-caminho.jpg",
+    "htmlElementId": "clinic-card-1"
+  },
+  {
+    "id": 2,
+    "name": "Clínica Veterinária Bicho Solto",
+    "description": "Consultas, Vacinas, Cirurgias, Hospedagem, Banho e Tosa, Especialidades, Microchipagem, Sexagem de Aves e Viagem Pet.",
+    "address": "Rua 3, 51 - Cidade Jardim, Rio Claro",
+    "phone": "+5519998542433",
+    "whatsapp": "5519998542433",
+    "latitude": -22.4144,
+    "longitude": -47.572300000000006,
+    "routesLink": "https://www.google.com/maps?rlz=1C1PRFI_enBR792BR792&um=1&ie=UTF-8&fb=1&gl=br&sa=X&geocode=KSMHabU528eUMXFg2lXxIhZo&daddr=R.+3,+51+-+Cidade+Jardim,+Rio+Claro+-+SP,+13501-040",
+    "logoImage": "assets/img/logos/bicho-solto.jpg",
+    "htmlElementId": "clinic-card-2"
+  },
+  {
+    "id": 3,
+    "name": "Consultório Veterinário Dra. Katia Finardi",
+    "description": "Dra Erica Leite (Cães/Gatos/Tartarugas) Consulta, Vacinas e Hotel.",
+    "address": "Av. 5, 1449 - Jardim Claret - Rio Claro",
+    "phone": "+551935233177",
+    "whatsapp": "551935233177",
+    "latitude": -22.413400000000003,
+    "longitude": -47.5713,
+    "routesLink": "https://www.google.com/maps/place/Consult%C3%B3rio+Veterin%C3%A1rio+Katia+Finardi/@-22.4154838,-47.5733133,17z/data=!3m1!4b1!4m6!3m5!1s0x94c7da58f95a73e1:0xd110f753d63f1795!8m2!3d-22.4154888!4d-47.5707384!16s%2Fg%2F11d_wvzsqk?entry=ttu&g_ep=EgoyMDI2MDEyNS4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D",
+    "logoImage": "assets/img/logos/katia-finardi.jpg",
+    "htmlElementId": "clinic-card-3"
+  },
+  {
+    "id": 4,
+    "name": "Pet Family Clínica Veterinária",
+    "description": "Dra Erica Leite (Cães/Gatos/Tartarugas) Consulta, Vacinas e Hotel.",
+    "address": "Rua 3A, 1852 - Jardim América - Rio Claro",
+    "phone": "+551935354565",
+    "whatsapp": "5519998349784",
+    "latitude": -22.4124,
+    "longitude": -47.5703,
+    "routesLink": "https://www.google.com/maps?s=web&rlz=1C1PRFI_enBR792BR792&lqi=CiBDbMOtbmljYSBWZXRlcmluw6FyaWEgUGV0IEZhbWlseUir5L6-4q2AgAhaMhAAEAEQAhADGAAYARgCGAMiIGNsw61uaWNhIHZldGVyaW7DoXJpYSBwZXQgZmFtaWx5kgEMdmV0ZXJpbmFyaWFumgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVU5pYXpoUVJYcG5SUkFC-gEECAAQJw&vet=12ahUKEwi0up7O9auSAxWsqJUCHVlPO90Q1YkKegQIJxAB..i&cs=0&um=1&ie=UTF-8&fb=1&gl=br&sa=X&geocode=KcWtNkS928eUMZ_xsUdYqTBr&daddr=R.+3+A,+1852+-+Jardim+America,+Rio+Claro+-+SP,+13506-000",
+    "logoImage": "assets/img/logos/pet-family.jpg",
+    "htmlElementId": "clinic-card-4"
+  },
+  {
+    "id": 5,
+    "name": "Clínica Veterinária Sanvet",
+    "description": "Hospital veterinário, 24 horas, 7 dias por semana! Uma excelente equipe para atender seu cão, gato ou animal silvestre!",
+    "address": "Rua 1 A, 1152 – Vila Aparecida – Rio Claro",
+    "phone": "+5519981755292",
+    "whatsapp": "5519981755292",
+    "latitude": -22.4114,
+    "longitude": -47.569300000000005,
+    "routesLink": "https://www.google.com/maps/dir//Hospital+Veterin%C3%A1rio+Sanvet+-+R.+1+A,+1152+-+Vila+Saibreiro,+Rio+Claro+-+SP,+13500-511/@-22.3946357,-47.5622474,17z/data=!4m17!1m7!3m6!1s0x94c7dba8d168dbdd:0xaaa371e855fa6ceb!2sHospital+Veterin%C3%A1rio+Sanvet!8m2!3d-22.3946357!4d-47.5622474!16s%2Fg%2F11fxc1xvss!4m8!1m0!1m5!1m1!1s0x94c7dba8d168dbdd:0xaaa371e855fa6ceb!2m2!1d-47.5621929!2d-22.3946253!3e9?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D",
+    "logoImage": "assets/img/logos/sanvet.jpg",
+    "htmlElementId": "clinic-card-5"
+  },
+  {
+    "id": 6,
+    "name": "Clínica Veterinária Quatro Patas",
+    "description": "Especialistas em: Endocrinologia, Oftalmologia, Oncologia, Anestesista, Ortopedia, Exames Laboratorias.",
+    "address": "Avenida 6, 439 Ruas 5 e 6 - Centro - Rio Claro",
+    "phone": "+551935242674",
+    "whatsapp": "5519987066294",
+    "latitude": -22.410400000000003,
+    "longitude": -47.5683,
+    "routesLink": "https://www.google.com/maps/dir//VolpeVet+%7C+Hospital+Veterin%C3%A1rio+em+Rio+Claro+%7C+Veterin%C3%A1rios+24+Horas+-+R.+8,+2148+-+Santana,+Rio+Claro+-+SP,+13504-096/@-22.401987,-47.5683207,17z/data=!4m17!1m7!3m6!1s0x94c7db2e28163e17:0x6680b22a3d0d0eed!2sVolpeVet+%7C+Hospital+Veterin%C3%A1rio+em+Rio+Claro+%7C+Veterin%C3%A1rios+24+Horas!8m2!3d-22.401987!4d-47.5683207!16s%2Fg%2F11jbh3zbk2!4m8!1m0!1m5!1m1!1s0x94c7db2e28163e17:0x6680b22a3d0d0eed!2m2!1d-47.5683207!2d-22.401987!3e9?entry=ttu&g_ep=EgoyMDI2MDEyNS4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D",
+    "logoImage": "assets/img/logos/quatro-patas.jpg",
+    "htmlElementId": "clinic-card-6"
+  },
+  {
+    "id": 7,
+    "name": "Clínica Veterinária VolpeVet",
+    "description": "24h | Laboratório próprio e UTI | Cães / Gatos / Animais Silvestres e Exóticos | + de 9 mil pets atendidos",
+    "address": "Rua 8, 2148 - Santana – Rio Claro",
+    "phone": "+551935231097",
+    "whatsapp": "5519971125653",
+    "latitude": -22.4094,
+    "longitude": -47.5673,
+    "routesLink": "https://www.google.com/maps/dir//VolpeVet+%7C+Hospital+Veterin%C3%A1rio+em+Rio+Claro+%7C+Veterin%C3%A1rios+24+Horas+-+R.+8,+2148+-+Santana,+Rio+Claro+-+SP,+13504-096/@-22.401987,-47.5683207,17z/data=!4m17!1m7!3m6!1s0x94c7db2e28163e17:0x6680b22a3d0d0eed!2sVolpeVet+%7C+Hospital+Veterin%C3%A1rio+em+Rio+Claro+%7C+Veterin%C3%A1rios+24+Horas!8m2!3d-22.401987!4d-47.5683207!16s%2Fg%2F11jbh3zbk2!4m8!1m0!1m5!1m1!1s0x94c7db2e28163e17:0x6680b22a3d0d0eed!2m2!1d-47.5683207!2d-22.401987!3e9?entry=ttu&g_ep=EgoyMDI2MDEyNS4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D",
+    "logoImage": "assets/img/logos/volpevet.jpg",
+    "htmlElementId": "clinic-card-7"
+  }
+]
