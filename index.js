@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const db = new sqlite3.Database('./app/clinicas.db');
+const db = require('./app/database');
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
