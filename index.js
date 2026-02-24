@@ -6,7 +6,9 @@ const db = require('./app/database');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const multer = require('multer');
+const sharp = require("sharp");
 const path = require('path');
+const fs = require("fs");
 
 const citiesRoutes = require("./app/routes/cities");
 
@@ -164,22 +166,39 @@ function authMiddleware(req, res, next) {
 /* =====================================================
    UPLOAD LOGO
 ===================================================== */
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '../public/uploads/logos'));
-  },
-  filename: function (req, file, cb) {
-    const unique = Date.now() + path.extname(file.originalname);
-    cb(null, unique);
-  }
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 3 * 1024 * 1024 }, // 3MB
 });
 
-const upload = multer({ storage });
+app.post("/api/upload", authMiddleware, upload.single("logo"), async (req, res) => {
 
-app.post('/api/upload', authMiddleware, upload.single('logo'), (req, res) => {
-  res.json({
-    url: 'uploads/logos/' + req.file.filename
-  });
+  if (!req.file) {
+    return res.status(400).json({ error: "Arquivo não enviado" });
+  }
+
+  try {
+
+    const uploadDir = path.join(__dirname, "public/uploads/logos");
+
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+
+    const fileName = Date.now() + ".webp";
+    const filePath = path.join(uploadDir, fileName);
+
+    await sharp(req.file.buffer)
+      .resize({ width: 400 })
+      .webp({ quality: 80 })
+      .toFile(filePath);
+
+    res.json({ url: "uploads/logos/" + fileName });
+
+  } catch (err) {
+    console.error("Erro no upload:", err);
+    res.status(500).json({ error: "Erro ao processar imagem" });
+  }
 });
 
 /* =====================================================
