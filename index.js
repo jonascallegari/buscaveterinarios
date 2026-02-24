@@ -381,10 +381,43 @@ app.put('/api/clinics/:id', authMiddleware, (req, res) => {
   });
 });
 
-// EXCLUIR
+// EXCLUIR CLÍNICA + LOGO
 app.delete('/api/clinics/:id', authMiddleware, (req, res) => {
-  db.run("DELETE FROM clinics WHERE id=?", [req.params.id], () => {
-    res.json({ deleted: true });
+
+  const clinicId = req.params.id;
+
+  // 1️⃣ Buscar logo atual
+  db.get("SELECT logoImage FROM clinics WHERE id = ?", [clinicId], (err, clinic) => {
+
+    if (err) return res.status(500).json({ error: err.message });
+    if (!clinic) return res.status(404).json({ error: "Clínica não encontrada" });
+
+    const logo = clinic.logoImage;
+
+    // 2️⃣ Apagar arquivo se existir
+    if (logo) {
+
+      const caminhoLogo = path.join(__dirname, "public", logo);
+
+      if (fs.existsSync(caminhoLogo)) {
+        fs.unlink(caminhoLogo, (err) => {
+          if (err) {
+            console.error("Erro ao apagar logo:", err);
+          } else {
+            console.log("Logo removida com sucesso");
+          }
+        });
+      }
+    }
+
+    // 3️⃣ Excluir do banco
+    db.run("DELETE FROM clinics WHERE id = ?", [clinicId], function (err) {
+
+      if (err) return res.status(500).json({ error: err.message });
+
+      res.json({ deleted: true });
+    });
+
   });
 });
 
