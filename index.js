@@ -339,14 +339,46 @@ app.put('/api/clinics/:id', authMiddleware, (req, res) => {
 
   const c = req.body;
   const slug = gerarSlug(c.name);
+  const clinicId = req.params.id;
 
-  db.run(
-    `UPDATE clinics SET 
-      name=?, slug=?, description=?, address=?, phone=?, whatsapp=?, latitude=?, longitude=?, logoImage=?
-     WHERE id=?`,
-    [c.name, slug, c.description, c.address, c.phone, c.whatsapp, c.latitude, c.longitude, c.logoImage, req.params.id],
-    () => res.json({ updated: true })
-  );
+  // 1️⃣ Buscar logo atual no banco
+  db.get("SELECT logoImage FROM clinics WHERE id = ?", [clinicId], (err, clinicAtual) => {
+
+    if (err) return res.status(500).json({ error: err.message });
+    if (!clinicAtual) return res.status(404).json({ error: "Clínica não encontrada" });
+
+    const logoAntiga = clinicAtual.logoImage;
+
+    // 2️⃣ Atualizar dados
+    db.run(
+      `UPDATE clinics SET 
+        name=?, slug=?, description=?, address=?, phone=?, whatsapp=?, latitude=?, longitude=?, logoImage=?
+       WHERE id=?`,
+      [c.name, slug, c.description, c.address, c.phone, c.whatsapp, c.latitude, c.longitude, c.logoImage, clinicId],
+      function (err) {
+
+        if (err) return res.status(500).json({ error: err.message });
+
+        // 3️⃣ Se houver nova logo diferente da antiga, apagar antiga
+        if (c.logoImage && logoAntiga && logoAntiga !== c.logoImage) {
+
+          const caminhoAntigo = path.join(__dirname, "public", logoAntiga);
+
+          if (fs.existsSync(caminhoAntigo)) {
+            fs.unlink(caminhoAntigo, (err) => {
+              if (err) {
+                console.error("Erro ao apagar logo antiga:", err);
+              } else {
+                console.log("Logo antiga removida com sucesso");
+              }
+            });
+          }
+        }
+
+        res.json({ updated: true });
+      }
+    );
+  });
 });
 
 // EXCLUIR
