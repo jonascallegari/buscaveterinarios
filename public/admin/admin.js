@@ -1,5 +1,4 @@
 // admin.js
-
 const API = '/api/clinics';
 const API_CITIES = '/api/cities';
 
