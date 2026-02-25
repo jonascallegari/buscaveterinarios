@@ -13,73 +13,50 @@
 </head>
 
 <body> 
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand">Área Administrativa</a>
-            <form class="d-flex" role="search">
-                <button class="btn btn-outline-success"  onclick="logout()">Sair</button>
-            </form>
+    
+            <a class="navbar-brand" href="index.html">
+                Painel Admin
+            </a>
+    
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuAdmin">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="menuAdmin">
+    
+                <ul class="navbar-nav me-auto"> 
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            Clínicas
+                        </a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="cidades.html">
+                            Cidades
+                        </a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="usuario.html">
+                            Alterar Senha
+                        </a>
+                    </li>
+    
+                </ul>
+    
+                <button class="btn btn-outline-light" onclick="logout()">
+                    Sair
+                </button>
+    
+            </div>
         </div>
     </nav>
-    <div class="container mt-4">
-        <div class="card my-4">
-            <div class="card-header">
-                <h3>Gerenciar Admin</h3>
-            </div>
-        
-            <div class="card-body">
-                <h4>Alterar Senha</h4>                
-                <form id="formSenha">
-                    <div class="mb-2">
-                        <input type="password" id="currentPassword" class="form-control" placeholder="Senha atual" required>
-                    </div>
-                
-                    <div class="mb-2">
-                        <input type="password" id="newPassword" class="form-control" placeholder="Nova senha" required>
-                    </div>
-                
-                    <button type="submit" class="btn btn-primary">
-                        Alterar Senha
-                    </button>
-                </form>        
-            </div>
-        </div>
 
-        <div class="card my-4">
-            <div class="card-header">
-                <h3>Gerenciar Cidades</h3>
-            </div>
-        
-            <div class="card-body">
-                <form id="formCidade" class="row g-3">
-                    <div class="col-md-6">
-                        <input id="cityName" placeholder="Nome da Cidade" class="form-control">
-                    </div>
-        
-                    <div class="col-md-6">
-                        <input id="cityState" placeholder="Estado (UF)" class="form-control">
-                    </div>
-        
-                    <div class="col-md-12">
-                        <button class="btn btn-success w-100">Salvar Cidade</button>
-                    </div>
-                </form>
-        
-                <hr>
-        
-                <table class="table mt-3">
-                    <thead>
-                        <tr>
-                            <th>Cidade</th>
-                            <th>Estado</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="listaCidades"></tbody>
-                </table>
-        
-            </div>
-        </div>
+    <div class="container mt-4">  
 
         <div class="card mb-4">
             <div class="card-header">
@@ -87,6 +64,7 @@
             </div>
 
             <div class="card-body">
+                <div id="alerta" class="alert d-none"></div>
                 <form id="formClinica" class="row g-3">
                     <div class="col-md-12">                        
                         <input id="name" placeholder="Nome" class="form-control"> 
@@ -120,14 +98,16 @@
                         <input type="file" id="logo" class="form-control">
                     </div>
                     <div class="col-md-12">
-                        <button class="btn btn-primary w-100">Salvar</button>
+                        <button id="btnSalvarClinica" type="submit" class="btn btn-primary w-100">
+                            Salvar
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
 
         <!-- LISTAGEM DE ANUNCIANTES -->
-        <div class="card">
+        <div class="card mb-4">
             <div class="card-header">
                 <h3>Anunciantes Cadastrados</h3>
             </div>
@@ -146,6 +126,12 @@
                         </thead>
                         <tbody id="lista"></tbody>
                     </table>
+                </div>
+
+                <div class="d-flex justify-content-center mt-3">
+                    <nav>
+                        <ul class="pagination" id="paginacao"></ul>
+                    </nav>
                 </div>
             </div>            
         </div>
@@ -183,42 +169,13 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Modal Confirmar Exclusão -->
-    <div class="modal fade" id="modalExcluirCidade" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-    
-                <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title">Confirmar Exclusão</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-    
-                <div class="modal-body">
-                    <p id="textoConfirmacaoCidade"></p>
-                    <p class="text-danger fw-bold">
-                        Essa ação não poderá ser desfeita.
-                    </p>
-                </div>
-    
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Cancelar
-                    </button>
-                    <button type="button" class="btn btn-danger" onclick="confirmarExcluirCidade()">
-                        Sim, Excluir
-                    </button>
-                </div>
-    
-            </div>
-        </div>
-    </div>
+    </div>    
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 
     <script src="admin.js"></script>
+    <script src="clinicas.js"></script>
 </body>
 
 </html>

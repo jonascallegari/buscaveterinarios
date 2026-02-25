@@ -301,6 +301,7 @@ app.get('/api/clinics', (req, res) => {
       cities.state AS city_state
     FROM clinics
     LEFT JOIN cities ON clinics.city_id = cities.id
+    ORDER BY clinics.id DESC
   `;
 
   db.all(sql, [], (err, rows) => {
