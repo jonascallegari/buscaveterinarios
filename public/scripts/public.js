@@ -5,6 +5,7 @@ async function carregarCidadesPublico() {
     const cidades = await res.json();
 
     document.getElementById("publicCitySelect").innerHTML =
+        `<option value="" selected>Selecione</option>` +
         cidades.map(c =>
             `<option value="${c.state.toLowerCase()}/${c.slug}">
             ${c.name} - ${c.state}

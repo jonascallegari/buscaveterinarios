@@ -108,7 +108,8 @@ app.get('/api/clinics/:uf/:slug', (req, res) => {
     FROM clinics
     JOIN cities ON clinics.city_id = cities.id
     WHERE cities.slug = ?
-      AND LOWER(cities.state) = LOWER(?)
+    AND LOWER(cities.state) = LOWER(?)
+    AND clinics.visible = 1
   `;
 
   db.all(sql, [slug, uf], (err, rows) => {
@@ -134,6 +135,7 @@ app.get('/api/clinic/:uf/:citySlug/:clinicSlug', (req, res) => {
     WHERE clinics.slug = ?
       AND cities.slug = ?
       AND LOWER(cities.state) = LOWER(?)
+      AND clinics.visible = 1
   `;
 
   db.get(sql, [clinicSlug, citySlug, uf], (err, row) => {
@@ -282,6 +284,7 @@ app.get('/api/clinics/city/:cityId', (req, res) => {
     FROM clinics
     LEFT JOIN cities ON clinics.city_id = cities.id
     WHERE clinics.city_id = ?
+    AND clinics.visible = 1
   `;
 
   db.all(sql, [req.params.cityId], (err, rows) => {
@@ -326,9 +329,9 @@ app.post('/api/clinics', authMiddleware, (req, res) => {
 
   db.run(
     `INSERT INTO clinics 
-     (city_id, name, slug, description, address, phone, whatsapp, latitude, longitude, logoImage)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-    [c.city_id, c.name, slug, c.description, c.address, c.phone, c.whatsapp, c.latitude, c.longitude, c.logoImage],
+     (city_id, name, slug, description, address, phone, whatsapp, latitude, longitude, logoImage, visible, plan)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    [c.city_id, c.name, slug, c.description, c.address, c.phone, c.whatsapp, c.latitude, c.longitude, c.logoImage, c.visible ?? 1, c.plan ?? "BONIFICADO"],
     function () {
       res.json({ id: this.lastID });
     }
@@ -353,9 +356,9 @@ app.put('/api/clinics/:id', authMiddleware, (req, res) => {
     // 2️⃣ Atualizar dados
     db.run(
       `UPDATE clinics SET 
-        name=?, slug=?, description=?, address=?, phone=?, whatsapp=?, latitude=?, longitude=?, logoImage=?
-       WHERE id=?`,
-      [c.name, slug, c.description, c.address, c.phone, c.whatsapp, c.latitude, c.longitude, c.logoImage, clinicId],
+        name=?, slug=?, description=?, address=?, phone=?, whatsapp=?, latitude=?, longitude=?, logoImage=?,
+       visible=?, plan=? WHERE id=?`,
+      [c.name, slug, c.description, c.address, c.phone, c.whatsapp, c.latitude, c.longitude, c.logoImage, c.visible, c.plan, clinicId],
       function (err) {
 
         if (err) return res.status(500).json({ error: err.message });

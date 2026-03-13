@@ -19,6 +19,13 @@ async function carregarCidadesSelect() {
 
     const select = document.getElementById("citySelect");
 
+    document
+        .getElementById("buscaNome")
+        .addEventListener("input", buscarPorNome);
+
+    document.getElementById("filtroCidade")
+        .addEventListener("change", filtrarPorCidade);
+
     if (!select) return;
 
     select.innerHTML =
@@ -28,6 +35,59 @@ async function carregarCidadesSelect() {
         ).join("");
 }
 
+//Busca
+function buscarPorNome() {
+
+    const termo = document
+        .getElementById("buscaNome")
+        .value
+        .toLowerCase();
+
+    const filtradas = todasClinicas.filter(c =>
+        c.name.toLowerCase().includes(termo)
+    );
+
+    paginaAtual = 1;
+
+    renderizarPagina(filtradas);
+
+}
+
+//Filtro Cidade
+async function carregarFiltroCidades() {
+
+    const res = await fetch(API_CITIES);
+    const cidades = await res.json();
+
+    const select = document.getElementById("filtroCidade");
+
+    select.innerHTML =
+        `<option value="">Todas as cidades</option>` +
+        cidades.map(c =>
+            `<option value="${c.id}">
+                ${c.name} - ${c.state}
+            </option>`
+        ).join("");
+
+}
+
+function filtrarPorCidade() {
+
+    const cidadeId = document.getElementById("filtroCidade").value;
+
+    if (!cidadeId) {
+
+        // mostrar todas
+        renderizarPagina(todasClinicas);
+        return;
+
+    }
+
+    const filtradas = todasClinicas.filter(c => c.city_id == cidadeId);
+
+    renderizarPagina(filtradas);
+
+}
 
 // UPLOAD
 async function uploadLogo() {
@@ -50,14 +110,14 @@ async function uploadLogo() {
     return data.url;
 }
 
-function renderizarPagina() {
+function renderizarPagina(lista = todasClinicas) {
 
     const tbody = document.getElementById("lista");
 
     const inicio = (paginaAtual - 1) * itensPorPagina;
     const fim = inicio + itensPorPagina;
 
-    const paginaItens = todasClinicas.slice(inicio, fim);
+    const paginaItens = lista.slice(inicio, fim);
 
     tbody.innerHTML = paginaItens.map(c => `
         <tr>
@@ -71,11 +131,23 @@ function renderizarPagina() {
 
             <td>${c.name}</td>
 
+            <td>
+            ${c.visible ?
+                        '<span class="badge bg-success">Ativo</span>' :
+                        '<span class="badge bg-secondary">Oculto</span>'}
+            </td>
+
+            <td>
+            ${c.plan === "PAGO"
+                ? '<span class="badge bg-success">PAGO</span>'
+                : '<span class="badge bg-secondary">BONIFICADO</span>'}
+            </td>
+
             <td>${c.phone || "-"}</td>
 
             <td>${c.whatsapp || "-"}</td>
 
-            <td>${c.address || "-"}</td>
+            <td>${c.city_name || "-"}</td>
 
             <td>
 
@@ -191,7 +263,10 @@ async function salvar(e) {
             description: description.value,
             latitude: parseFloat(latitude.value),
             longitude: parseFloat(longitude.value),
-            logoImage: logoUrl
+            logoImage: logoUrl,
+
+            visible: parseInt(document.getElementById("visible").value),
+            plan: document.getElementById("plan").value
 
         };
 
@@ -273,6 +348,8 @@ async function abrirEdicao(id) {
 
     document.getElementById("editId").value = c.id;
     document.getElementById("editName").value = c.name;
+    document.getElementById("editVisible").value = c.visible ?? 1;
+    document.getElementById("editPlan").value = c.plan ?? "BONIFICADO";
     document.getElementById("editAddress").value = c.address;
     document.getElementById("editLatitude").value = c.latitude || "";
     document.getElementById("editLongitude").value = c.longitude || "";
@@ -318,6 +395,8 @@ async function salvarEdicao() {
 
     const clinicaAtualizada = {
         name: document.getElementById("editName").value,
+        visible: parseInt(document.getElementById("editVisible").value),
+        plan: document.getElementById("editPlan").value,
         address: document.getElementById("editAddress").value,
         phone: document.getElementById("editPhone").value,
         whatsapp: document.getElementById("editWhatsapp").value,
@@ -373,5 +452,6 @@ document.addEventListener("DOMContentLoaded", () => {
     carregar();
 
     carregarCidadesSelect();
+    carregarFiltroCidades();
 
 });
