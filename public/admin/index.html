@@ -69,19 +69,23 @@
                     <div class="col-md-12">                        
                         <input id="name" placeholder="Nome" class="form-control"> 
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <label class="form-label">Exibir Anunciante</label>                    
                         <select id="visible" class="form-select">
                             <option value="1" selected>SIM</option>
                             <option value="0">NÃO</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <label class="form-label">Plano</label>
                         <select id="plan" class="form-select">
                             <option value="BONIFICADO" selected>BONIFICADO</option>
                             <option value="PAGO">PAGO</option>
                         </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Data de Validade</label>
+                        <input type="date" id="expiration_date" class="form-control">
                     </div>
                     <div class="col-md-8">
                         <input id="address" placeholder="Endereço" class="form-control">
@@ -127,14 +131,14 @@
             </div>
             <div class="card-body">
                 <div class="row mb-3">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                     
                         <label class="form-label">Buscar anunciante</label>
                     
                         <input type="text" id="buscaNome" class="form-control" placeholder="Digite o nome da clínica...">
                     
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                 
                         <label class="form-label">Filtrar por cidade</label>
                 
@@ -142,6 +146,18 @@
                             <option value="">Todas as cidades</option>
                         </select>
                 
+                    </div>
+                    <div class="col-md-3">
+
+                        <label class="form-label">Status</label>
+
+                        <select id="filtroStatus" class="form-select">
+                            <option value="">Todos</option>
+                            <option value="ativo">Ativo</option>
+                            <option value="vencido">Vencido</option>
+                            <option value="oculto">Oculto</option>
+                        </select>
+
                     </div>
                 
                 </div>
@@ -195,8 +211,10 @@
                     
                     <select id="editPlan" class="form-select mb-3">
                         <option value="BONIFICADO">BONIFICADO</option>
-                        <option value="PAGO">PAGO</option>
+                        <option value="PAGO">PAGO</option>                        
                     </select>
+                    <label class="form-label mb-2">Data de Validade</label>
+                    <input type="date" id="editExpiration" class="form-control mb-2">
                     
                     <input id="editAddress" class="form-control mb-2" placeholder="Endereço">
                     <input id="editLatitude" class="form-control mb-2" placeholder="Latitude">

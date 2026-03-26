@@ -327,11 +327,20 @@ app.post('/api/clinics', authMiddleware, (req, res) => {
   const c = req.body;
   const slug = gerarSlug(c.name);
 
+  // 👉 DATA DE VALIDADE
+  let expiration = c.expiration_date;
+
+  if (!expiration) {
+    const hoje = new Date();
+    hoje.setFullYear(hoje.getFullYear() + 1);
+    expiration = hoje.toISOString().split("T")[0]; // YYYY-MM-DD
+  }
+
   db.run(
     `INSERT INTO clinics 
-     (city_id, name, slug, description, address, phone, whatsapp, latitude, longitude, logoImage, visible, plan)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-    [c.city_id, c.name, slug, c.description, c.address, c.phone, c.whatsapp, c.latitude, c.longitude, c.logoImage, c.visible ?? 1, c.plan ?? "BONIFICADO"],
+     (city_id, name, slug, description, address, phone, whatsapp, latitude, longitude, logoImage, visible, plan, expiration_date)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    [c.city_id, c.name, slug, c.description, c.address, c.phone, c.whatsapp, c.latitude, c.longitude, c.logoImage, c.visible ?? 1, c.plan ?? "BONIFICADO", expiration],
     function () {
       res.json({ id: this.lastID });
     }
@@ -357,8 +366,8 @@ app.put('/api/clinics/:id', authMiddleware, (req, res) => {
     db.run(
       `UPDATE clinics SET 
         name=?, slug=?, description=?, address=?, phone=?, whatsapp=?, latitude=?, longitude=?, logoImage=?,
-       visible=?, plan=? WHERE id=?`,
-      [c.name, slug, c.description, c.address, c.phone, c.whatsapp, c.latitude, c.longitude, c.logoImage, c.visible, c.plan, clinicId],
+       visible=?, plan=?, expiration_date=? WHERE id=?`,
+      [c.name, slug, c.description, c.address, c.phone, c.whatsapp, c.latitude, c.longitude, c.logoImage, c.visible, c.plan, c.expiration_date, clinicId],
       function (err) {
 
         if (err) return res.status(500).json({ error: err.message });
