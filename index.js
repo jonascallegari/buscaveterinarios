@@ -207,7 +207,7 @@ app.get('/:uf/:citySlug/:clinicSlug', (req, res, next) => {
             <!-- WhatsApp -->
             <a class="btn btn-success text-uppercase"
                onclick="return gtag_report_conversion('https://api.whatsapp.com/send?phone=551930233654&text=Ol%C3%A1.%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais.');"
-               href="https://api.whatsapp.com/send?phone=551930233654&text=Ol%C3%A1.%20Gostaria%20de%20anunciar%20no%20Veterin%C3%A1rios%20em%20Rio%20Claro."
+               href="https://api.whatsapp.com/send?phone=551930233654&text=Ol%C3%A1.%20Gostaria%20de%20anunciar%20no%20Veterin%C3%A1rios%20."
                title="Anunciar no guia de veterinários e clínicas veterinárias">
                
                 <strong>
@@ -472,7 +472,7 @@ app.get('/:uf/:slug', (req, res, next) => {
             <!-- WhatsApp -->
             <a class="btn btn-success text-uppercase"
                onclick="return gtag_report_conversion('https://api.whatsapp.com/send?phone=551930233654&text=Ol%C3%A1.%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais.');"
-               href="https://api.whatsapp.com/send?phone=551930233654&text=Ol%C3%A1.%20Gostaria%20de%20anunciar%20no%20Veterin%C3%A1rios%20em%20Rio%20Claro."
+               href="https://api.whatsapp.com/send?phone=551930233654&text=Ol%C3%A1.%20Gostaria%20de%20anunciar%20no%20Veterin%C3%A1rios%20."
                title="Anunciar no guia de veterinários e clínicas veterinárias">
                
                 <strong>
