@@ -1,213 +1,288 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/rio-claro</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/rio-claro</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/araras</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/araras</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/limeira</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/limeira</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/piracicaba</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/piracicaba</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/sao-carlos</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/sao-carlos</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/campinas</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/campinas</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/araras/clinica-veterinaria-brucieri-vet</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/am/manaus</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/limeira/clinica-veterinaria-orsi</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/araras/clinica-veterinaria-campeao</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/limeira/diag-e-vet-laboratorio-veterinario</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/araras/clinica-veterinaria-galera-animal</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/limeira/fabiana-zopeletto-medicina-felina</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/araras/clinica-veterinaria-morovet</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/limeira/petsave-centro-veterinario</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/araras/hospital-veterinario-animal-planet</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/limeira/policlinica-veterinaria-aura</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/araras/sos-animal-clinica-veterinaria</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/limeira/vetlim-hospital-veterinario-24h</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/araras/uc-pet-clinica-veterinaria</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/limeira/vida-pet-clinica-veterinaria</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/sao-carlos/clinica-e-hospital-veterinario-domvet</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/rio-claro/clinica-veterinaria-bicho-solto</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/sao-carlos/clinica-veterinaria-cao-panheiro</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/rio-claro/clinica-veterinaria-quatro-patas</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/sao-carlos/clinica-veterinaria-e-hospital-sancla</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/rio-claro/clinica-veterinaria-sanvet</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/sao-carlos/clinica-veterinaria-vetclinic</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/rio-claro/clinica-veterinaria-volpevet</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/sao-carlos/clinica-veterinaria-zagha</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/rio-claro/consultorio-veterinario-dra-katia-finardi</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/sao-carlos/dra-ana-rita-salles-domicilio</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/rio-claro/pet-family-clinica-veterinaria</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/sao-carlos/melhor-amigo-clinica-veterinaria</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/rio-claro/vet-a-caminho</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/campinas/clinica-hospital-veterinario-nova-campinas-hvnc</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/piracicaba/centro-medico-veterinario-4-patas</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/campinas/clinica-veterinaria-bella-vet</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/piracicaba/clinica-veterinaria-amemais</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/campinas/clinica-veterinaria-medcat-medicina-de-felinos</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/piracicaba/clinica-veterinaria-dr-giu</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/campinas/clinica-veterinaria-unicare-vet</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/piracicaba/diego-rufino-medico-veterinario</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/campinas/clinica-veterinaria-vettorini</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/piracicaba/hospital-clinica-veterinaria-gattare</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/campinas/dra-gabriela-gomes-domicilio</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/piracicaba/hospital-veterinario-toca-dos-bichos</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/campinas/s-o-s-animal-cia</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/piracicaba/hospital-veterinario-volpevet</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/limeira/clinica-veterinaria-orsi</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/campinas/clinica-veterinaria-bella-vet</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/limeira/diag-e-vet-laboratorio-veterinario</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/campinas/clinica-veterinaria-medcat</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/limeira/fabiana-zopeletto-medicina-felina</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/campinas/clinica-veterinaria-s-o-s-animal-cia</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/limeira/petsave-centro-veterinario</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/campinas/clinica-veterinaria-unicare-vet</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/limeira/policlinica-veterinaria-aura</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/campinas/clinica-veterinaria-vettorini</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/limeira/vetlim-hospital-veterinario-24h</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/campinas/essencia-animal-dra-gabriela-gomes-atendimento-domiciliar</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/limeira/vida-pet-clinica-veterinaria</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/campinas/hospital-veterinario-nova-campinas</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/rio-claro/clinica-veterinaria-bicho-solto</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/araras/clinica-veterinaria-brucieri-vet</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/rio-claro/clinica-veterinaria-quatro-patas</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/araras/clinica-veterinaria-campeao</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/rio-claro/clinica-veterinaria-sanvet</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/araras/clinica-veterinaria-galera-animal</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/rio-claro/clinica-veterinaria-volpevet</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/araras/clinica-veterinaria-morovet</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/rio-claro/consultorio-veterinario-dra-katia-finardi</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/araras/hospital-veterinario-animal-planet</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/rio-claro/pet-family-clinica-veterinaria</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/araras/sos-animal-clinica-veterinaria</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://buscaclinicasveterinarias.com.br/sp/rio-claro/vet-a-caminho</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/araras/uc-pet-clinica-veterinaria</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/sao-carlos/clinica-e-hospital-veterinario-domvet</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/sao-carlos/clinica-veterinaria-cao-panheiro</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/sao-carlos/clinica-veterinaria-e-hospital-sancla</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/sao-carlos/clinica-veterinaria-vetclinic</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/sao-carlos/clinica-veterinaria-zagha</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/sao-carlos/dra-ana-rita-salles-domicilio</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/sp/sao-carlos/melhor-amigo-clinica-veterinaria</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/am/manaus/clinica-e-hospital-veterinario-angelpet</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/am/manaus/clinica-veterinaria-animed</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/am/manaus/clinica-veterinaria-hapvet</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/am/manaus/clinica-veterinaria-inovapet</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/am/manaus/clinica-veterinaria-linameg</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/am/manaus/clinica-veterinaria-patas-patas</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buscaclinicasveterinarias.com.br/am/manaus/clinica-veterinaria-usfel-saude-felina</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>

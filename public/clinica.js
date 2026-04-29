@@ -70,7 +70,7 @@
     );
 
     const teleLink = clinic.phone
-      ? `tel:+${clinic.phone.replace(/\D/g, '')}`
+      ? `tel:${clinic.phone.replace(/\D/g, '')}`
       : '#';
 
     card.innerHTML = `

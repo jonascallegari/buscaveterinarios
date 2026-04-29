@@ -586,6 +586,26 @@ app.get('/:uf/:slug', (req, res, next) => {
 </div>    
             <hr class="my-5">
 
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-12 text-white text-center">
+                        <h3 id="segmentos">Outros Segmentos</h3>
+                        <p>Além das clínicas veterinárias, a plataforma também abre espaço para a divulgação de empresas de diversos outros
+                            segmentos, sempre no mesmo formato organizado e eficiente. Conheça:</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center text-center">                    
+                    <div class="col-md-4 col-12 mb-3">
+                        <div class="card bg-transparent text-white border-light shadow">
+                            <img src="/assets/img/chaveiro.jpg" class="card-img opacity-75" alt="Chaveiros">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title mt-2 text-shadow">Chaveiros</h4>
+                                <p class="card-text">Encontre os melhores Chaveiros em ${cityName}.</p>
+                                <a href="https://buscachaveiros.com.br/" target="_blank" class="btn btn-outline-light">Acesse</a>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+
             <footer>
                 <div class="row pb-5 justify-content-center">
                     <div class="col-md-2 col-6">
